@@ -1,11 +1,10 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import ButtonsPage from "./components/ButtonsPage.vue";
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <ButtonsPage />
 </template>
 
 <style scoped>
-
 </style>

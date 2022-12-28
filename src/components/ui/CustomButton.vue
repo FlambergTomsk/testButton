@@ -1,48 +1,33 @@
 <template>
-  <a
-    v-if="link !== ''"
-    class="custom-btn"
-    :class="btnClass"
-    :href="link"
-    target="_blank"
-  >
-    <slot />
-  </a>
-  <nuxt-link
-    v-else-if="nuxtLink !==''"
-    class="custom-btn"
-    :class="btnClass"
-    :to="nuxtLink"
-  >
-    <slot />
-  </nuxt-link>
-  <button
-    v-else
-    class="custom-btn"
-    :class="btnClass"
-    @click="$emit('click')"
-  >
-    {{ text }}
-    <div class="icon-btn_left">
-      <slot name="left" />
-    </div>
-    <slot />
-    <div class="icon-btn_right">
-      <slot name="right" />
-    </div>
-  </button>
+  <div class="content">
+    <a v-if="link" target="_blanck" :href="link" class="link"><slot /></a>
+    <button v-else class="custom-btn" :class="btnClass" @click="$emit('click')">
+      {{ text }}
+      <slot />
+      <span class="custom-btn__time" v-if="time && countDown !== 0">
+        {{ normalizeMinutes() }}
+        :
+        {{ normalizeSeconds() }}
+      </span>
+    </button>
+  </div>
 </template>
 <script>
 export default {
-  name: 'CustomButton',
+  name: "CustomButton",
+  data() {
+    return {
+      countDown: 0,
+    };
+  },
   props: {
     link: {
       type: String,
-      default: '',
+      default: "",
     },
     nuxtLink: {
       type: String,
-      default: '',
+      default: "",
     },
     disabled: {
       type: Boolean,
@@ -50,31 +35,73 @@ export default {
     },
     mode: {
       type: String,
-      default: '',
+      default: "",
     },
     text: {
       type: String,
-      default: '',
+      default: "",
     },
+    time: {
+      type: String,
+      default: "",
+    },
+    isSmall: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted() {
+    if (this.time) {
+      this.startCoutDownClock();
+    }
   },
   computed: {
     btnClass() {
-      const { mode, disabled } = this;
+      const { mode } = this;
       return [
-        { 'custom-btn_disabled': disabled },
-        { 'custom-btn_orange': mode === 'orange' },
-        { 'custom-btn_white-orange': mode === 'white-orange' },
-        { 'custom-btn_black': mode === 'black' },
-        { 'custom-btn_black-medium': mode === 'black-medium' },
-        { 'custom-btn_black-small': mode === 'black-small' },
-        { 'custom-btn_dark': mode === 'dark' },
-        { 'custom-btn_clear': mode === 'clear' },
+        { "custom-btn_primary": mode === "primary" },
+        { "custom-btn_secondary": mode === "secondary" },
+        { "custom-btn_warning": mode === "warning" },
+        { "custom-btn_disabled": mode === "disabled" },
+        { "custom-btn_info": mode === "info" },
+        { "custom-btn_danger": mode === "danger" },
+        { "custom-btn_action": mode === "action" },
+        { "custom-btn_timer": mode === "timer" },
+        { "custom-btn_quest": mode === "quest" },
+        { "custom-btn_small": this.isSmall === true },
       ];
     },
   },
-  mounted(){
-    console.log(this.mode)
+  methods: {
+    startCoutDownClock() {
+      this.countDown = 20;
+      let arr = this.time.split(":");
+      this.countDown = Number(arr[0]) * 60 + Number(arr[1]);
+      this.countDownTimer();
+    },
+
+    countDownTimer() {
+      if (this.countDown === 0) {
+        this.isTimeToSend = false;
+      }
+      if (this.countDown > 0) {
+        setTimeout(() => {
+          this.countDown -= 1;
+          this.countDownTimer();
+        }, 1000);
+      }
+    },
+
+    normalizeMinutes() {
+      return `0${Math.trunc(this.countDown / 60)}`;
+    },
+    normalizeSeconds() {
+      const num = Math.trunc(this.countDown % 60);
+      let result = null;
+      num < 10 ? (result = `0${num}`) : (result = num);
+      return result;
+    },
   },
 };
 </script>
-<style lang="sass" src="/src/assets/custom-button.sass" scoped></style>
+<style lang="sass" src="/src/assets/ui/custom-button.scss" scoped></style>

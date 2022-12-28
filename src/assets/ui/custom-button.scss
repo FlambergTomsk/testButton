@@ -1,0 +1,103 @@
+
+.custom-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 356px;
+  height: 52px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 130%;
+  text-align: center;
+  transition: .3s;
+  font-family: 'Phosphate';
+  border: transparent;
+  cursor: pointer;
+  color: $whiteText;
+  border-radius: 16px;
+
+  &__time{
+    background-color: $red;
+    margin-left: 6px;
+    padding: 3px;
+    border-radius: 10px;
+    min-width: 54px;
+    color: $whiteText;
+    }
+
+  &:hover{
+    transform: translateY(-2px)
+    }
+
+  &_primary{
+    background-color: $purple
+    }
+  
+  &_secondary{
+    background-color: $coral
+    }
+
+  &_warning{
+    background-color: $yellow
+    }
+
+  &_disabled{
+    background-color: $grey;
+    color: $greyText;
+    pointer-events: none;
+    }
+  
+  &_info{
+    background-color: $blue;
+    }
+  
+  &_danger{
+    background-color: $red;
+    }
+  
+  &_action{
+    background-color: $orange;
+    }
+
+  &_quest{
+      background-color: $green;
+    }
+    
+  &_timer{
+    @extend .custom-btn_disabled
+    }
+
+  &_small{
+    width: 60px;
+    height: 60px;
+  }
+  
+}
+
+.link{
+  display: flex;
+  justify-content: center;
+  color: $whiteText;
+  font-family: 'NunitoBold';
+    &:hover {
+      color: $greyText;
+      transition: 0.3s;
+    }
+    &:active {
+      color: $coral;
+      transition: 0.3s;
+    }
+}
+
+@media (max-width: 640px) {
+  .custom-btn_small{
+    width: 52px;
+    height: 52px;
+    transition: 0.3s;
+  }
+  .custom-btn{
+    width: 290px;
+    transition: 0.3s;
+  }  
+}
