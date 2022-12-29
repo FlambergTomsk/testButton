@@ -25,14 +25,6 @@ export default {
       type: String,
       default: "",
     },
-    nuxtLink: {
-      type: String,
-      default: "",
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
     mode: {
       type: String,
       default: "",
