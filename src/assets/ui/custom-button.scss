@@ -91,13 +91,13 @@
 }
 
 @media (max-width: 640px) {
+  .custom-btn{
+    width: 290px;
+    transition: 0.3s;
+  }
   .custom-btn_small{
     width: 52px;
     height: 52px;
     transition: 0.3s;
   }
-  .custom-btn{
-    width: 290px;
-    transition: 0.3s;
-  }  
 }

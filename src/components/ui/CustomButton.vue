@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <a v-if="link" target="_blanck" :href="link" class="link"><slot /></a>
+    <a v-if="link" target="_blank" :href="link" class="link"><slot /></a>
     <button v-else class="custom-btn" :class="btnClass" @click="$emit('click')">
       {{ text }}
       <slot />

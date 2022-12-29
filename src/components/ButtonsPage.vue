@@ -22,9 +22,7 @@
           :time="item.time"
           :is-small="true"
         >
-          <template:icons>
-            <span class="page__icon" :class="item.icon" />
-          </template:icons>
+          <span class="page__icon" :class="item.icon" />
         </custom-button>
       </div>
     </div>
@@ -49,88 +47,93 @@ export default {
         {
           mode: "primary",
           text: "send message",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "secondary",
           text: "send message",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "warning",
           text: "send message",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "disabled",
           text: "send message",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "info",
           text: "send message",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "danger",
           text: "send message",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "action",
           text: "send message",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "timer",
           text: "repeat letter",
           time: "03:00",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
       ],
       smallButtons: [
         {
           mode: "primary",
           icon: "icon-cross",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "danger",
           icon: "icon-exit",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "quest",
           icon: "icon-quest",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "primary",
           icon: "icon-arrow",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "danger",
           icon: "icon-google",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "info",
           icon: "icon-vk",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "action",
           icon: "icon-social",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
         {
           mode: "primary",
           icon: "icon-edit",
-          id: Math.random().toString(36).substring(2),
+          id: this.generateId(),
         },
       ],
     };
+  },
+  methods: {
+    generateId() {
+      return Math.random().toString(36).substring(2);
+    },
   },
 };
 </script>

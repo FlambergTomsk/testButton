@@ -9,13 +9,9 @@ export default defineConfig({
       scss: {
         sourceMap: true,
         additionalData: `
-        @import "/src/assets/styles/vars.scss";
-        @import "/src/assets/styles/mixin.scss";
-        @import "/src/assets/styles/icomoon.scss";
-        ` 
+        @import "/src/assets/styles/main.scss";` 
       }
     }
   },
-
 })
 
